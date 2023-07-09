@@ -1,3 +1,5 @@
+Laboratorium nr 7 - Języki Programowania - 3. semestr
+
 Podczas laboratorium należy zbudować mały rozproszony system wykorzystując technologię RMI. W skład tego systemu wchodzą instancje klas uruchamiane równolegle (na jednym lub na kilku różnych komputerach). System umożliwia zasymulowanie działania klubów poszukiwaczy skarbów.
 
 Specyfikacja problemu:
