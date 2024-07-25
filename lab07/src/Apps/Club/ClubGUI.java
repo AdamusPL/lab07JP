@@ -174,7 +174,7 @@ public class ClubGUI extends JFrame implements ActionListener {
             }
         }
 
-        if (e.getSource() == permissionEnd) { //zakończenie przeszukiwania
+        if (e.getSource() == permissionEnd) { //end research
             try {
                 if (registered) {
                     if (working > 0) {
