@@ -6,14 +6,14 @@ import java.rmi.RemoteException;
 import model.Report;
 
 public interface IClub extends Remote {
-	// rejestracja namiastki Poszukiwacza w Klubie
+	// register substitute of Seeker to Club
 	boolean register(ISeeker ic) throws RemoteException;
 
-	// wyrejestrowanie namiastki Poszukiwacza z Klubu
+	// unregister substitute of Seeker from Club
 	boolean unregister(String seekerName) throws RemoteException;
 	
 	String getName() throws RemoteException;
-	// raportowanie znalezisk (ka¿dy Artefakt)
+	// report discovery (every Artifact)
 	boolean report(Report report, String seekerName) throws RemoteException;
 
 }

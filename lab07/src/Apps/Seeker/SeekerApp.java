@@ -13,19 +13,43 @@ import java.rmi.registry.Registry;
 
 public class SeekerApp implements ISeeker {
 
-    String seekerName;
-    String clubName;
-    IClub iClub;
+    private String seekerName;
+    private String clubName;
+    private IClub iClub;
+
+    public void setSeekerName(String seekerName) {
+        this.seekerName = seekerName;
+    }
+
+    public void setClubName(String clubName) {
+        this.clubName = clubName;
+    }
+
+    public void setiClub(IClub iClub) {
+        this.iClub = iClub;
+    }
+
+    public String getSeekerName() {
+        return seekerName;
+    }
+
+    public String getClubName() {
+        return clubName;
+    }
+
+    public IClub getiClub() {
+        return iClub;
+    }
 
     public static void main(String[] args) throws IOException, NotBoundException {
         SeekerApp seekerApp = new SeekerApp();
-        Registry reg = LocateRegistry.getRegistry("localhost",1099);
+        Registry reg = LocateRegistry.getRegistry("localhost", 1099);
         IOffice iOffice = (IOffice) reg.lookup("OfficeApp");
 
-        Registry regW = LocateRegistry.getRegistry("localhost",1100);
+        Registry regW = LocateRegistry.getRegistry("localhost", 1100);
         IWorld iWorld = (IWorld) regW.lookup("WorldApp");
 
-        SeekerGUI seekerGUI = new SeekerGUI(seekerApp,iOffice,iWorld);
+        SeekerGUI seekerGUI = new SeekerGUI(seekerApp, iOffice, iWorld);
     }
 
     @Override
@@ -35,6 +59,6 @@ public class SeekerApp implements ISeeker {
 
     @Override
     public String getName() throws RemoteException {
-        return null;
+        return seekerName;
     }
 }

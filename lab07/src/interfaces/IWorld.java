@@ -7,6 +7,6 @@ import model.Artifact;
 
 public interface IWorld extends Remote {
 
-	// zapytanie o zawartoœæ danego pola w danym sektorze 
-	Artifact explore(String seekerName, String sector, String field) throws RemoteException;
+    // ask for content of specific field in sector
+    Artifact explore(String seekerName, String sector, String field) throws RemoteException;
 }

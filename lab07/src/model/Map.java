@@ -4,54 +4,56 @@ import java.util.ArrayList;
 
 public class Map {
 
-    char rowSector ='J'; //do wprowadzenia oznaczeń sektorów
-    char columnSector ='1';
-    String column10Sector ="10";
-    String sector;
+    private char rowSector = 'J'; //sector signs
+    private char columnSector = '1';
+    private String column10Sector = "10";
+    private String sector;
 
-    char rowMap='H'; //do wprowadzenia oznaczenia sektorów mapy
-    char columnMap='1';
-    String mapSector;
-    String sign;
+    private char rowMap = 'H'; //map sector signs
+    private char columnMap = '1';
+    private String mapSector;
+    private String sign;
 
 
-    public Map(String sign){
-        this.sign=sign;
+    public Map(String sign) {
+        this.sign = sign;
     }
 
-    public ArrayList<ArrayList<Field>> fieldLabelsArray; //arraylista pola gry
+    private ArrayList<ArrayList<Field>> fieldLabelsArray; //field arraylist
 
-    public ArrayList<Field> makeRow(int x, int y) {
+    public ArrayList<ArrayList<Field>> getFieldLabelsArray() {
+        return fieldLabelsArray;
+    }
+
+    private ArrayList<Field> makeRow(int x, int y) {
         ArrayList<Field> rowField = new ArrayList<>();
         for (int i = 0; i < 80; i++) {
             x += 8;
-            boolean isOccupied=false;
+            boolean isOccupied = false;
 
-            if((i+1)%10==0){
-                sector=new StringBuilder().append(rowSector).append(column10Sector).toString();
-            }
-
-            else {
+            if ((i + 1) % 10 == 0) {
+                sector = new StringBuilder().append(rowSector).append(column10Sector).toString();
+            } else {
                 sector = new StringBuilder().append(rowSector).append(columnSector).toString();
             }
 
-            mapSector=new StringBuilder().append(rowMap).append(columnMap).toString();
+            mapSector = new StringBuilder().append(rowMap).append(columnMap).toString();
 
-            Field field = new Field(x,y,isOccupied,sign,sector,mapSector);
+            Field field = new Field(x, y, isOccupied, sign, sector, mapSector);
             rowField.add(field);
 
             columnSector++;
-            if((i+1)%10==0){
+            if ((i + 1) % 10 == 0) {
                 columnMap++;
-                columnSector ='1';
-                x+=10;
+                columnSector = '1';
+                x += 10;
             }
         }
-        columnMap='1';
+        columnMap = '1';
         return rowField;
     }
 
-    public void makeMap(){
+    public void makeMap() {
         fieldLabelsArray = new ArrayList<>();
         int y = 5;
         for (int i = 0; i < 80; i++) {
@@ -62,7 +64,7 @@ public class Map {
             y += 8;
             if ((i + 1) % 10 == 0) {
                 rowMap--;
-                rowSector ='J';
+                rowSector = 'J';
                 y += 10;
             }
         }
